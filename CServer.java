@@ -102,10 +102,6 @@ class ClientHandler implements Runnable
                 // break the string into message and recipient part 
                 StringTokenizer st = new StringTokenizer(received, "#"); 
                 String MsgToSend = st.nextToken(); 
-                if(MsgToSend=="go secure")
-                {
-                  diffieHellman();
-                }
                 String recipient = st.nextToken(); 
   
                 // search for the recipient in the connected devices list. 

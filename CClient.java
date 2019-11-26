@@ -8,13 +8,29 @@ import java.util.Scanner;
 public class CClient  
 { 
     final static int ServerPort = 1234; 
+    public int dhmPubKey;
+    public int dhmMixKey;
+    public boolean encryptActive;
     public class diffieHellman(int a)
     {
       public void initreq()
       {
-        //Generate Public and MixKey
+        //Generate Public and MixKey1
+        
       }
-      public void 
+      public void ackreq(int pubkey,int mixkey1)
+      {
+        //Recieved Pubkey and MixKey1.Process Goldkey. Send MixKey2.
+        int mixkey2;
+
+        return mixkey2;
+      }
+      public int ackrecd(int ackreq)
+      {
+        int goldkey;
+        //Recieved AckReq. Process Goldkey.
+        return goldkey;
+      }
       /*
       Here a=0 means encryption request is initiated by the user.
       Here a=1 means encryption request is recieved by the user.
@@ -65,9 +81,10 @@ public class CClient
                         // read the message sent to this client 
                         String msg = dis.readUTF(); 
                         System.out.println(msg); 
-                        if(msg="go secure")
+                        if(msg=="go secure")
                         {
-                          diffieHellman(1);
+                          //DHM init req recd.
+
                         }
                     } catch (IOException e) { 
   

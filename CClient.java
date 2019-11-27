@@ -8,7 +8,8 @@ import com.chilkatsoft.CkZip;
 public class CClient  
 { 
     final static int ServerPort = 1234; 
-    
+
+    public static CkDh x = new CkDh();
     
     private static class diffieHellman
     {
@@ -94,15 +95,14 @@ public class CClient
                           StringTokenizer st = new StringTokenizer(msg, "#"); 
                           String MsgToSend = st.nextToken(); 
                           String recipient = st.nextToken(); 
-                          MsgToSend=incrChar(MsgToSend,dhm.dhmGoldKey);
+                          MsgToSend=incrChar(MsgToSend,1);
                           msg=MsgToSend+"#"+recipient;
                         }
 
                         if(msg.contains("go secure") && !(dhm.encryptActive))
                         {
                           System.out.println("Requesting user to use DHM Encryption...");
-                          dhm.initreq();
-                          msg=dhm.dhmPubKey+"."+dhm.dhmMixKey+"@"+msg;
+                          msg=x.p()+"."+x.get_G()+"@"+msg;
                           //Person initiates DHM encryption.
                         }
                         else if(msg.contains("secure") && !(dhm.encryptActive))
@@ -137,7 +137,9 @@ public class CClient
                         {
                           System.out.println("Your partner is requesting to go secure. Please confirm by typing secure.");
                           //DHM init req recd.
-                          dhm.initack(0,0);
+                          String p;
+                          String g;
+                          x.setPG(p,g);
                           logmsg=true;
                         }
 

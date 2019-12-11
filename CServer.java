@@ -21,11 +21,12 @@ public class CServer
         ServerSocket ss = new ServerSocket(1234); 
           
         Socket s; 
-          
+        System.out.println("Listening for clients... ");
         // running infinite loop for getting 
         // client request 
         while (true)  
         { 
+            
             // Accept the incoming request 
             s = ss.accept(); 
   

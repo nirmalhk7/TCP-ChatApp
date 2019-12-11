@@ -4,7 +4,6 @@ import java.io.*;
 import java.net.*; 
 import java.util.*; 
 import java.lang.*;
-import com.chilkatsoft.CkZip;
 public class CClient  
 { 
     final static int ServerPort = 1234; 
@@ -13,6 +12,7 @@ public class CClient
     private static class diffieHellman
     {
       public int dhmGenerator;
+      public int dhmPubKey; 
       public int dhmModPrime; 
       public int dhmMixKey;
       public int dhmGoldKey;
@@ -64,7 +64,7 @@ public class CClient
     }
     public static void main(String args[]) throws UnknownHostException, IOException  
     { 
-        System.load("libchilkat.so");
+        //System.load("libchilkat.so");
         Scanner scn = new Scanner(System.in); 
         diffieHellman dhm=new diffieHellman();
         // getting localhost ip 
